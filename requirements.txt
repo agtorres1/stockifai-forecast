@@ -1,0 +1,9 @@
+pandas
+numpy
+openpyxl
+holidays
+lightgbm
+scikit-learn
+mlflow
+pytest
+jupyter
