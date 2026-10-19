@@ -7,7 +7,7 @@ Módulo de **forecasting de demanda de repuestos a 4 semanas**, extraído de Sto
 ![Azure ML](https://img.shields.io/badge/Azure_ML-planificado-0078D4?logo=microsoftazure&logoColor=white)
 ![Estado](https://img.shields.io/badge/estado-exploración-orange)
 
-> El producto completo (backend, frontend y base de datos) vive en [StockifAI](https://github.com/agtorres1/StockifAI). Este repo contiene solo el componente de pronóstico.
+> El producto completo (Django + Angular, alertas de quiebre y sobrestock, dashboard) vive en [StockifAI2](https://github.com/agtorres1/StockifAI2). Este repo toma su componente de pronóstico y lo rediseña.
 
 ---
 
@@ -42,6 +42,16 @@ Un modelo que prediga "cero" para todo acierta casi siempre y no sirve para nada
 | **Estrategia multi-horizonte** | Directa (un modelo por t+1…t+4), comparada contra la recursiva del sistema original |
 | **Baselines** | Predecir 0 · media móvil de 8 semanas |
 | **Validación** | Temporal con origen rodante (rolling origin), nunca k-fold aleatorio |
+
+### Sistema original vs. rediseño
+
+| | StockifAI (v1) | stockifai-forecast (v2) |
+|---|---|---|
+| Modelo | Un LightGBM por segmento | LightGBM global, segmento como feature (comparado contra v1) |
+| Multi-horizonte | Recursivo | Directo (comparado contra recursivo) |
+| Función objetivo | MAE | A evaluar: Tweedie vs. MAE, siempre contra baselines |
+| Validación | Un único corte: 4 semanas de validación y 4 de test | Origen rodante sobre varios cortes |
+| Ejecución | `django-crontab` dentro del backend | Pipeline de Azure ML |
 
 ### Por qué estas decisiones
 
