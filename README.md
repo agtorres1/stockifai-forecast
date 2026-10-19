@@ -88,24 +88,4 @@ Lo que se valida en `notebooks/` se mueve a `src/stockifai_forecast/`, y ese mis
 
 ---
 
-## Cómo reproducirlo
 
-```bash
-git clone https://github.com/agtorres1/stockifai-forecast.git
-cd stockifai-forecast
-conda create -n stockifai python=3.11
-conda activate stockifai
-pip install -r requirements.txt
-```
-
-Luego, abrir los notebooks de `notebooks/` en orden.
-
----
-
-## Stack
-
-Python 3.11 · pandas · LightGBM · scikit-learn · Azure Machine Learning (planificado)
-
----
-
-**Autora:** Agustina Torres · Ingeniería en Sistemas, UTN FRBA
